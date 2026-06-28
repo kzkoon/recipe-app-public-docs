@@ -1,82 +1,172 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>プライバシーポリシー</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プライバシーポリシー / Privacy Policy - Recipe Diary</title>
   <style>
-    body {
-      font-family: sans-serif;
-      line-height: 1.8;
-      background-color: #f9f9f9;
-      color: #333;
-      max-width: 800px;
-      margin: auto;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #333; }
+    header {
+      background: #e07b54;
+      color: white;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+    header h1 { font-size: 1.2rem; font-weight: 600; }
+    .lang-buttons { display: flex; gap: 8px; }
+    .lang-btn {
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1.5px solid white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
     }
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 2rem;
-      color: #444;
+    .lang-btn.active { background: white; color: #e07b54; font-weight: bold; }
+    main { max-width: 720px; margin: 0 auto; padding: 20px; }
+    .updated { font-size: 0.75rem; color: #888; margin-bottom: 16px; }
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      margin-bottom: 12px;
     }
-    p {
-      margin-bottom: 1rem;
-    }
+    .section h2 { font-size: 1rem; font-weight: 700; color: #222; margin-bottom: 8px; }
+    .section p { font-size: 0.875rem; color: #444; line-height: 1.7; white-space: pre-line; }
+    [lang-content] { display: none; }
+    [lang-content].visible { display: block; }
   </style>
 </head>
 <body>
-  <h1>プライバシーポリシー</h1>
+  <header>
+    <h1 id="header-title">プライバシーポリシー</h1>
+    <div class="lang-buttons">
+      <button class="lang-btn active" onclick="setLang('ja')" id="btn-ja">日本語</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </header>
 
-  <p>
-    本アプリ（以下「本サービス」）は、個人が運営するレシピ管理のためのアプリケーションです。<br>
-    本サービスでは、ユーザーのプライバシーを尊重し、以下の通りプライバシーポリシーを定めます。
-  </p>
+  <main>
+    <p class="updated" id="updated-text">最終更新日: 2026年6月</p>
 
-  <h2>1. 収集する情報</h2>
-  <p>
-    本サービスでは、以下の情報を収集・保存します：
-    <ul>
-      <li>Googleログインにより取得されるユーザー識別情報（UID、メールアドレス）</li>
-      <li>ユーザーが登録するレシピ情報（タイトル、材料、手順、メモ、調理記録、タグ）</li>
-    </ul>
-  </p>
+    <!-- Section 1 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">1. はじめに</h2>
+      <h2 lang-content="en">1. Introduction</h2>
+      <p lang-content="ja" class="visible">Recipe Diary（以下「本アプリ」）は、個人が開発・提供するレシピ管理アプリです。本プライバシーポリシーは、本アプリをご利用いただく際に収集する情報の取り扱いについて説明します。</p>
+      <p lang-content="en">Recipe Diary (the "App") is a recipe management app developed and provided by an individual developer. This Privacy Policy explains how information is collected and used when you use the App.</p>
+    </div>
 
-  <h2>2. 情報の利用目的</h2>
-  <p>
-    収集した情報は、以下の目的のために使用します：
-    <ul>
-      <li>レシピ情報のバックアップ</li>
-      <li>複数端末間でのレシピデータの同期</li>
-    </ul>
-  </p>
+    <!-- Section 2 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">2. 収集する情報</h2>
+      <h2 lang-content="en">2. Information We Collect</h2>
+      <p lang-content="ja" class="visible">本アプリは以下の情報を収集・利用します。
 
-  <h2>3. 情報の第三者提供</h2>
-  <p>
-    当方は、法律に基づく場合を除き、ユーザーの個人情報を第三者に提供することはありません。
-  </p>
+・Firebase Authentication: 匿名または Google アカウントによる認証情報（UID）
+・レシピデータ: ユーザーが入力したレシピ・調理記録（AWS S3 に保存）
+・端末情報・ログ: アプリの改善目的で Firebase Analytics により収集
+・外部URL: レシピ取込み機能でユーザーが入力した URL（OGP画像を自動取得するため、当該URLの外部サーバーへアクセスします）</p>
+      <p lang-content="en">The App collects and uses the following information:
 
-  <h2>4. 情報の保存と期間</h2>
-  <p>
-    ユーザーの情報は、AWS、Firebase等のクラウドサービスを用いて安全に保存されます。情報は、ユーザーが自ら削除しない限り保持されます。
-  </p>
+· Firebase Authentication: Authentication info (UID) via anonymous or Google account sign-in
+· Recipe Data: Recipes and cooking records entered by the user (stored on AWS S3)
+· Device Info &amp; Logs: Collected via Firebase Analytics for app improvement
+· External URLs: URLs entered by the user for the recipe import feature (the App accesses the external server to automatically retrieve OGP preview images from the URL)</p>
+    </div>
 
-  <h2>5. ユーザーの権利</h2>
-  <p>
-    ユーザーは、自身の情報の確認・修正・削除を行う権利を有しています。ご希望の場合は、下記のお問い合わせ先までご連絡ください。
-  </p>
+    <!-- Section 3 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">3. 情報の利用目的</h2>
+      <h2 lang-content="en">3. How We Use Your Information</h2>
+      <p lang-content="ja" class="visible">収集した情報は以下の目的にのみ使用します。
 
-  <h2>6. お問い合わせ先</h2>
-  <p>
-    メールアドレス：<a href="mailto:kzkoon63@gmail.com">kzkoon63@gmail.com</a>
-  </p>
+・アプリ機能の提供（レシピの保存・同期）
+・サービス品質の改善
+・不正利用の防止</p>
+      <p lang-content="en">Collected information is used solely for the following purposes:
 
-  <h2>7. プライバシーポリシーの変更</h2>
-  <p>
-    必要に応じて、本ポリシーの内容を変更することがあります。変更があった場合は、本アプリ上でお知らせします。
-  </p>
+· Providing app features (saving and syncing recipes)
+· Improving service quality
+· Preventing unauthorized use</p>
+    </div>
 
+    <!-- Section 4 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">4. 第三者サービスの利用</h2>
+      <h2 lang-content="en">4. Third-Party Services</h2>
+      <p lang-content="ja" class="visible">本アプリは以下の第三者サービスを利用します。各サービスのプライバシーポリシーもご確認ください。
+
+・Firebase（Google LLC）: 認証・分析
+・Amazon Web Services (AWS): データ保存</p>
+      <p lang-content="en">The App uses the following third-party services. Please also review their respective privacy policies.
+
+· Firebase (Google LLC): Authentication &amp; analytics
+· Amazon Web Services (AWS): Data storage</p>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">5. データの保存・管理</h2>
+      <h2 lang-content="en">5. Data Storage &amp; Management</h2>
+      <p lang-content="ja" class="visible">レシピデータはユーザー固有の AWS S3 ストレージに保存されます。クラウド同期を利用しない場合、データは端末のローカルストレージにのみ保存されます。</p>
+      <p lang-content="en">Recipe data is stored in a user-specific AWS S3 storage bucket. If cloud sync is not used, data is stored only on the device's local storage.</p>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">6. データの削除</h2>
+      <h2 lang-content="en">6. Data Deletion</h2>
+      <p lang-content="ja" class="visible">アカウントおよびデータの削除をご希望の場合は、Google Play ストアのレビュー・フィードバック機能からご連絡ください。合理的な期間内に対応いたします。</p>
+      <p lang-content="en">To request deletion of your account and data, please use the review or feedback feature on Google Play. We will respond within a reasonable timeframe.</p>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">7. お子様のプライバシー</h2>
+      <h2 lang-content="en">7. Children's Privacy</h2>
+      <p lang-content="ja" class="visible">本アプリは13歳未満のお子様を対象としていません。13歳未満のお子様の個人情報を意図的に収集することはありません。</p>
+      <p lang-content="en">The App is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.</p>
+    </div>
+
+    <!-- Section 8 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">8. ポリシーの変更</h2>
+      <h2 lang-content="en">8. Changes to This Policy</h2>
+      <p lang-content="ja" class="visible">本ポリシーは予告なく変更される場合があります。重要な変更がある場合はアプリ内でお知らせします。</p>
+      <p lang-content="en">This policy may be updated without prior notice. We will notify you of significant changes within the App.</p>
+    </div>
+
+    <!-- Section 9 -->
+    <div class="section">
+      <h2 lang-content="ja" class="visible">9. お問い合わせ</h2>
+      <h2 lang-content="en">9. Contact</h2>
+      <p lang-content="ja" class="visible">プライバシーに関するご質問は、Google Play ストアのレビュー・フィードバック機能からお送りください。</p>
+      <p lang-content="en">For privacy-related inquiries, please use the review or feedback feature on Google Play.</p>
+    </div>
+  </main>
+
+  <script>
+    function setLang(lang) {
+      var isJa = lang === 'ja';
+      document.getElementById('header-title').textContent = isJa ? 'プライバシーポリシー' : 'Privacy Policy';
+      document.getElementById('updated-text').textContent = isJa ? '最終更新日: 2026年6月' : 'Last updated: June 2026';
+      document.getElementById('btn-ja').classList.toggle('active', isJa);
+      document.getElementById('btn-en').classList.toggle('active', !isJa);
+      document.querySelectorAll('[lang-content]').forEach(function(el) {
+        el.classList.toggle('visible', el.getAttribute('lang-content') === lang);
+      });
+    }
+  </script>
 </body>
 </html>
